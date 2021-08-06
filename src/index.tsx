@@ -9,14 +9,14 @@ const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#fff",
-      contrastText: "#000",
-    },
-    secondary: {
       light: "#67dcbf",
       main: "#41D4B0",
       dark: "#2d947b",
       contrastText: "#fff",
+    },
+    secondary: {
+      main: "#fff",
+      contrastText: "#000",
     },
   },
   typography: {
