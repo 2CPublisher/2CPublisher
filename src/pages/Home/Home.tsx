@@ -21,7 +21,7 @@ const HomeContainer = styled.div`
   justify-content: space-between;
   min-height: 600px;
   margin-top: 50px;
-`
+`;
 
 const UploadFileZone = styled.div`
   display: flex;
@@ -39,12 +39,12 @@ const UploadFileZone = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 
 const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 function Home() {
   const [filesAdded, setFilesAdded] = useState<any>([])
@@ -113,7 +113,7 @@ function Home() {
         </ButtonsContainer>
       </HomeContainer>
     </MainLayout>
-  )
+  );
 }
 
-export default Home
+export default Home;

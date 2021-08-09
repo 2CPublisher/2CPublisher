@@ -1,6 +1,9 @@
-import Avatar from "@material-ui/core/Avatar"
-import Typography from "@material-ui/core/Typography"
-import styled from "@emotion/styled"
+import Avatar from "@material-ui/core/Avatar";
+import Typography from "@material-ui/core/Typography";
+import styled from "@emotion/styled";
+import { useWallet } from "../../hooks/useWallet";
+import { ellipseAddress } from "../../lib/utilities";
+import { ButtonStyled } from "../../components/Button";
 
 const UserInfoContainer = styled.div`
   display: flex;
@@ -10,21 +13,30 @@ const UserInfoContainer = styled.div`
   background-color: #e1e4f0;
   padding: 5px 15px 5px 15px;
   margin: 0 5px 0 5px;
-`
+`;
 
 const UserAddressInfo = () => {
+  const { web3Provider, address, connect, disconnect } = useWallet();
   return (
     <UserInfoContainer>
-      <Avatar
-        sx={{ width: 40, height: 40 }}
-        alt="Nico Valencia"
-        src="https://pbs.twimg.com/profile_images/1420834839159209984/8DT-YW8Z_400x400.jpg"
-      />
-      <Typography variant="subtitle1" component="div" sx={{ marginLeft: 1 }}>
-        0xe...9876f
-      </Typography>
+      {web3Provider && address ? (
+        <>
+          <Avatar
+            sx={{ width: 40, height: 40 }}
+            alt="Nico Valencia"
+            src="https://pbs.twimg.com/profile_images/1420834839159209984/8DT-YW8Z_400x400.jpg"
+          />
+          <ButtonStyled onClick={disconnect} variant="text">
+            {ellipseAddress(address)}
+          </ButtonStyled>
+        </>
+      ) : (
+        <ButtonStyled onClick={connect} variant="text">
+          Connect
+        </ButtonStyled>
+      )}
     </UserInfoContainer>
-  )
-}
+  );
+};
 
-export default UserAddressInfo
+export default UserAddressInfo;
