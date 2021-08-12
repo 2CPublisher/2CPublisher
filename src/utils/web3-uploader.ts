@@ -1,5 +1,5 @@
 import process from 'process';
-import { Web3Storage } from 'web3.storage';
+import { Web3Storage } from 'web3.storage/dist/bundle.esm.min.js';
 export class Web3Uploader {
   private token: string | undefined = '';
   private storage: Web3Storage;

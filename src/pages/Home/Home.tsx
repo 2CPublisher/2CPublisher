@@ -8,6 +8,7 @@ import Label from "../../components/Label"
 import "./Home.css"
 
 import styled from "@emotion/styled"
+import { Web3Uploader } from "../../utils/web3-uploader"
 
 const HomeContainer = styled.div`
   display: flex;
@@ -41,7 +42,8 @@ const ButtonsContainer = styled.div`
 
 function Home() {
   const onDrop = useCallback((acceptedFiles) => {
-    // Do something with the files
+    const uploader = new Web3Uploader();
+    uploader.storeFiles(acceptedFiles);
   }, [])
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
