@@ -1,30 +1,41 @@
-import process from 'process'
-import minimist from 'minimist'
-import { Web3Storage, getFilesFromPath } from 'web3.storage'
+import process from 'process';
+import { Web3Storage } from 'web3.storage';
+export class Web3Uploader {
+  private token: string | undefined = '';
+  private storage: Web3Storage;
+  public cid: string = '';
+  public percentageCompleted: number;
 
-async function main () {
-  const args = minimist(process.argv.slice(2))
-  const token = process.env.REACT_APP_WEB3_STORAGE_TOKEN
+  constructor() {
+    this.percentageCompleted = 0;
+    this.token = process.env.REACT_APP_WEB3_STORAGE_TOKEN;
 
-  if (!token) {
-    return console.error('A token is needed. You can create one on https://web3.storage')
+    if (!this.token) {
+      throw new Error('Set REACT_APP_WEB3_STORAGE_TOKEN variable');
+    }
+
+    this.storage = new Web3Storage({ token: this.token });
   }
 
-  if (args._.length < 1) {
-    return console.error('Please supply the path to a file or directory')
+  async storeFiles(files: File[]): Promise<string> {
+    this.cid = await this.storage.put(files);
+    return this.cid;
   }
 
-  const storage = new Web3Storage({ token })
-  const files = []
+  async storeWithProgress(files: File[]): Promise<string> {
+    const onRootCidReady = (cid: string) => {
+      this.cid = cid;
+      this.percentageCompleted = 100;
+    }
 
-  for (const path of args._) {
-    const pathFiles = await getFilesFromPath(path)
-    files.push(...pathFiles)
+    const totalSize = files.map(f => f.size).reduce((a, b) => a + b, 0)
+    let uploaded = 0;
+
+    const onStoredChunk = (size: number): void => {
+      uploaded += size;
+      this.percentageCompleted = totalSize / uploaded;
+    }
+
+    return await this.storage.put(files, { onRootCidReady, onStoredChunk });
   }
-
-  // We need to format the files to have the expected Filelike structure: { name: string, stream: ReadableStream }
-  const cid = await storage.put(files)
-  console.log('Content added with CID:', cid)
 }
-
-main()
