@@ -56,14 +56,12 @@ function Home() {
   const handleUpload = async () => {
     const uploader = new Web3Uploader()
 
-    console.log(
-      "🚀 ~ file: Home.tsx ~ line 60 ~ handleUpload ~ filesAdded",
-      filesAdded
-    )
+    //TODO: THIS MSN IS TEMPORAL. WE NEED TO IMPLEMENT AN SPINNER HERE
+    console.log("Uploading files... ")
+
     await uploader.storeFiles(filesAdded)
 
-    // Progress storage (probably not needed)
-    uploader.storeWithProgress(filesAdded)
+    console.log("Files uploaded... ")
   }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
