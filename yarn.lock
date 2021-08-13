@@ -12246,10 +12246,10 @@ web-vitals@^1.0.1:
   resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-1.1.2.tgz#06535308168986096239aa84716e68b4c6ae6d1c"
   integrity sha512-PFMKIY+bRSXlMxVAQ+m2aw9c/ioUYfDgrYot0YUa+/xa0sakubWhSDyxAKwzymvXVdF4CZI71g06W+mqhzu6ig==
 
-web3.storage@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/web3.storage/-/web3.storage-3.1.0.tgz#441d349e9664109cd248d06c10add7dc3854394a"
-  integrity sha512-CdxoQ4WKvXQMx2Hw7MOdCUOmwSpCdtOX+XI86EbiFwldXA3KmFdwF1b/VeYpQpKHEnheoANrO/owRujj3M22FQ==
+web3.storage@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/web3.storage/-/web3.storage-3.2.0.tgz#584460892a7ec8d83eb43655d031f0442f8e516e"
+  integrity sha512-2Y4Od63hlzxUf5isUCHUheWHXJzzRnoiwTE23+gnValaWYIsVbVkDpysz9Hz6cGwMvNe7zTu9dXgKbwrZj+JqA==
   dependencies:
     "@ipld/car" "^3.1.4"
     "@web-std/blob" "^2.1.0"
