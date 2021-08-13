@@ -1,13 +1,19 @@
-import { useCallback } from "react"
+import { useCallback, useState } from "react"
 import MainLayout from "../../components/Layout"
 import { useDropzone } from "react-dropzone"
 import Typography from "@material-ui/core/Typography"
 import { ButtonStyled } from "../../components/Button"
 import { AiOutlineCloudUpload } from "react-icons/ai"
 import Label from "../../components/Label"
+import FilesTable from "../../components/FilesTable"
+import { Web3Uploader } from "../../utils/web3-uploader"
 import "./Home.css"
 
 import styled from "@emotion/styled"
+
+type UploadFileZoneProps = {
+  hasElements: boolean
+}
 
 const HomeContainer = styled.div`
   display: flex;
@@ -22,7 +28,8 @@ const UploadFileZone = styled.div`
   justify-content: center;
   align-items: center;
   width: 639px;
-  height: 261px;
+  height: ${(props: UploadFileZoneProps) =>
+    props.hasElements ? "100px" : "261px"};
   background: #fafafd;
   border: 2px dashed #ced4eb;
   margin-top: 25px;
@@ -40,10 +47,25 @@ const ButtonsContainer = styled.div`
 `
 
 function Home() {
+  const [filesAdded, setFilesAdded] = useState<any>([])
+
   const onDrop = useCallback((acceptedFiles) => {
-    // Do something with the files
+    setFilesAdded((filesAdded: any) => [...filesAdded, ...acceptedFiles])
   }, [])
+
+  const handleUpload = async () => {
+    const uploader = new Web3Uploader()
+
+    //TODO: THIS MSN IS TEMPORAL. WE NEED TO IMPLEMENT AN SPINNER HERE
+    console.log("Uploading files... ")
+
+    await uploader.storeFiles(filesAdded)
+
+    console.log("Files uploaded... ")
+  }
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+  const hasElements = filesAdded.length > 0
 
   return (
     <MainLayout>
@@ -56,7 +78,7 @@ function Home() {
           <Typography variant="subtitle1" component="div">
             Drag an drop or upload your asset to the network.
           </Typography>
-          <UploadFileZone {...getRootProps()}>
+          <UploadFileZone {...getRootProps()} hasElements={hasElements}>
             <input {...getInputProps()} />
             {isDragActive ? (
               <p>Drop the files here ...</p>
@@ -65,10 +87,11 @@ function Home() {
                 <AiOutlineCloudUpload
                   style={{ width: 40, height: 40, color: "#7179A5" }}
                 />
-                <p>Upload a file or drag and drop</p>
+                <p>Upload {hasElements && "more"} files or drag and drop</p>
               </div>
             )}
           </UploadFileZone>
+          <FilesTable files={filesAdded} />
         </div>
         <Label
           text="Add metadata to this file"
@@ -80,7 +103,11 @@ function Home() {
         />
         <ButtonsContainer>
           <ButtonStyled variant="outlined">Cancel</ButtonStyled>
-          <ButtonStyled variant="contained" disabled>
+          <ButtonStyled
+            variant="contained"
+            disabled={!hasElements}
+            onClick={handleUpload}
+          >
             Continue
           </ButtonStyled>
         </ButtonsContainer>
