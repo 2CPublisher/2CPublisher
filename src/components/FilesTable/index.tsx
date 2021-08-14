@@ -30,19 +30,22 @@ export default function FilesTable({ files }: FilesTableProps) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {files.map((file: File) => (
-            <TableRow
-              key={file.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {file.name}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {file.size} bytes
-              </TableCell>
-            </TableRow>
-          ))}
+          {files.map(
+            (file: File) =>
+              file.name !== ".metadata" && (
+                <TableRow
+                  key={file.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {file.name}
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {file.size} bytes
+                  </TableCell>
+                </TableRow>
+              )
+          )}
         </TableBody>
       </Table>
     </TableContainer>
