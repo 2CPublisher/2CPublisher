@@ -32,7 +32,7 @@ export default function FilesTable({ files }: FilesTableProps) {
         <TableBody>
           {files.map(
             (file: File) =>
-              file.name !== ".metadata" && (
+              file.name !== "metadata.json" && (
                 <TableRow
                   key={file.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

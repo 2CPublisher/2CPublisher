@@ -114,7 +114,7 @@ function Home() {
       description,
       thumbnail,
     })
-    const newMetadata = await new File([metadataFile], ".metadata")
+    const newMetadata = await new File([metadataFile], "metadata.json")
     setFilesAdded((filesAdded: any) => [...filesAdded, newMetadata])
   }
 
