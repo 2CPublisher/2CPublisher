@@ -244,7 +244,7 @@ function Home() {
             disabled={!hasElements}
             onClick={handleUpload}
           >
-            Continue
+            Upload
           </ButtonStyled>
         </ButtonsContainer>
       </HomeContainer>
