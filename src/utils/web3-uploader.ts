@@ -1,3 +1,4 @@
+import "core-js/modules/es.symbol.async-iterator";
 import { Web3Storage } from "web3.storage/dist/bundle.esm.min.js";
 
 export type Metadata = {
@@ -8,7 +9,7 @@ export type Metadata = {
 
 export type FileData = {
   metadata: Metadata;
-  cid: string;
+  cid: any;
 };
 
 export class Web3Uploader {

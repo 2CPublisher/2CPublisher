@@ -1,6 +1,5 @@
 import "./Home.css"
 import styled from "@emotion/styled"
-import { FileData, Web3Uploader } from "src/utils/web3-uploader"
 import { useEffect, useState } from "react"
 import Typography from "@material-ui/core/Typography"
 import DappCard from "src/components/DappCard"
@@ -8,6 +7,7 @@ import { ButtonStyled } from "src/components/Button"
 import { useHistory } from "react-router-dom"
 import { useWallet } from "src/hooks/useWallet"
 import { BsFillPlusCircleFill } from "react-icons/bs"
+import { listUploads } from "src/utils/web3-uploader.b"
 
 const DappListContainer = styled.div`
   display: flex;
@@ -35,21 +35,18 @@ const HeaderContainer = styled.div`
 `
 
 function Home() {
-  const uploader = new Web3Uploader()
-  const [fileList, setFileList] = useState([] as FileData[])
+  const [fileList, setFileList] = useState([] as { metadata: {}; cid: any; }[])
   const { address } = useWallet()
   const history = useHistory()
 
   useEffect(() => {
-    if (uploader) {
-      const fetchFiles = async () => {
-        const files = await uploader.listUploads()
-        if (files) {
-          setFileList(files)
-        }
+    const fetchFiles = async () => {
+      const files = await listUploads();
+      if (files) {
+        setFileList(files)
       }
-      fetchFiles()
     }
+    fetchFiles();
   }, [])
 
   console.log(fileList)

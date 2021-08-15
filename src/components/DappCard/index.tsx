@@ -7,7 +7,6 @@ import {
 } from "@material-ui/core"
 import styled from "@emotion/styled"
 import { ReactElement } from "react"
-import { FileData } from "src/utils/web3-uploader"
 import { BiRightArrowAlt } from "react-icons/bi"
 
 import Rating from "@material-ui/core/Rating"
@@ -23,7 +22,7 @@ const GoToIcon = styled(BiRightArrowAlt)`
 `
 
 type DappCardProps = {
-  file: FileData
+  file: { metadata: {}; cid: any; }
 }
 
 export default function DappCard({ file }: DappCardProps): ReactElement {
@@ -42,10 +41,10 @@ export default function DappCard({ file }: DappCardProps): ReactElement {
       >
         <CardMedia
           component="img"
-          alt={file.metadata.name}
+          alt={file.metadata['name']}
           sx={{ width: 80, height: 80, borderRadius: 50 }}
-          image={`https://dweb.link/ipfs/${file.cid}/${file.metadata.thumbnail}`}
-          title={file.metadata.name}
+          image={`https://dweb.link/ipfs/${file.cid}/${file.metadata['thumbnail']}`}
+          title={file.metadata['name']}
         />
         <CardContent
           sx={{
@@ -61,7 +60,7 @@ export default function DappCard({ file }: DappCardProps): ReactElement {
               component="h2"
               sx={{ fontWeight: 700 }}
             >
-              {file.metadata.name}
+              {file.metadata['name']}
             </Typography>
             <div style={{ display: "flex" }}>
               <Rating
