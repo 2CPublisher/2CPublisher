@@ -77,7 +77,7 @@ function Home() {
       <DappListContainer>
         {address ? (
           fileList && fileList.length > 0 ? (
-            fileList.map((file) => <DappCard file={file} />)
+            fileList.map((file, key) => <DappCard key={key} file={file} />)
           ) : (
             <ConnectMsn>
               <Typography variant="h5" component="h3" sx={{ color: "white" }}>
