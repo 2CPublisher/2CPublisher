@@ -17,6 +17,17 @@ const DappListContainer = styled.div`
   margin-top: 80px;
 `
 
+const ConnectMsn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 100px;
+  background: #312f37;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 12px 32px rgba(0, 0, 0, 0.24);
+  border-radius: 16px;
+`
+
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -53,25 +64,33 @@ function Home() {
         >
           <strong>BYOF Records</strong>
         </Typography>
-        <ButtonStyled
-          variant="contained"
-          onClick={() => history.push("/upload")}
-          startIcon={<BsFillPlusCircleFill />}
-        >
-          Create new record
-        </ButtonStyled>
+        {address && (
+          <ButtonStyled
+            variant="contained"
+            onClick={() => history.push("/upload")}
+            startIcon={<BsFillPlusCircleFill />}
+          >
+            Create new record
+          </ButtonStyled>
+        )}
       </HeaderContainer>
       <DappListContainer>
         {address ? (
           fileList && fileList.length > 0 ? (
             fileList.map((file) => <DappCard file={file} />)
           ) : (
-            <div>
-              <a href="/upload">Upload some files</a>
-            </div>
+            <ConnectMsn>
+              <Typography variant="h5" component="h3" sx={{ color: "white" }}>
+                <strong>No Records Found</strong>
+              </Typography>
+            </ConnectMsn>
           )
         ) : (
-          <div>Connect Wallet</div>
+          <ConnectMsn>
+            <Typography variant="h5" component="h3" sx={{ color: "white" }}>
+              <strong>Connect Your Wallet</strong>
+            </Typography>
+          </ConnectMsn>
         )}
       </DappListContainer>
     </>
