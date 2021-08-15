@@ -28,7 +28,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
               component="div"
               sx={{ flexGrow: 1, marginLeft: 2 }}
             >
-              Publisher
+              BYOF Publisher
             </Typography>
             <Typography
               variant="subtitle1"
