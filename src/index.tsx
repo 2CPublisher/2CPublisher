@@ -1,28 +1,28 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import React from "react"
+import ReactDOM from "react-dom"
+import "./index.css"
+import App from "./App"
+import reportWebVitals from "./reportWebVitals"
+import { createTheme, ThemeProvider } from "@material-ui/core/styles"
 
 const theme = createTheme({
   palette: {
-    mode: "light",
+    mode: "dark",
     primary: {
-      light: "#67dcbf",
-      main: "#41D4B0",
-      dark: "#2d947b",
-      contrastText: "#fff",
+      light: "#A5A4FF",
+      main: "#A5A4FF",
+      dark: "#A5A4FF",
+      contrastText: "#000",
     },
     secondary: {
-      main: "#fff",
+      main: "#100F10",
       contrastText: "#000",
     },
   },
   typography: {
     fontFamily: "'Work Sans', sans-serif",
   },
-});
+})
 
 ReactDOM.render(
   <React.StrictMode>
@@ -31,9 +31,9 @@ ReactDOM.render(
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals()

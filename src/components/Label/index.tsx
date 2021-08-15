@@ -18,7 +18,11 @@ type LabelProps = {
 const Label = ({ text, toolTipMessage }: LabelProps) => {
   return (
     <LabelContainer>
-      <Typography variant="h6" component="div" sx={{ fontWeight: "bold" }}>
+      <Typography
+        variant="h6"
+        component="div"
+        sx={{ fontWeight: "bold", color: "#fff" }}
+      >
         {text}
       </Typography>
       <Tooltip title={toolTipMessage} placement="right">

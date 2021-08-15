@@ -1,5 +1,5 @@
 import * as React from "react"
-import Grid from "@material-ui/core/Grid"
+import Container from "@material-ui/core/Container"
 import AppBar from "@material-ui/core/AppBar"
 import Box from "@material-ui/core/Box"
 import Toolbar from "@material-ui/core/Toolbar"
@@ -19,30 +19,21 @@ type MainLayoutProps = { children: React.ReactNode }
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, backgroundColor: "#100F10" }}>
         <AppBar position="static" color="secondary">
           <Toolbar>
             <Square />
             <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1, marginLeft: 2 }}
-            >
-              BYOF Publisher
-            </Typography>
-            <Typography
               variant="subtitle1"
               component="div"
-              sx={{ marginRight: 1 }}
+              sx={{ flexGrow: 1, marginLeft: 2, fontWeight: 600 }}
             >
-              Tabs on an interface
+              The publisher
             </Typography>
             <UserAddressInfo />
           </Toolbar>
         </AppBar>
-        <Grid container direction="column" alignContent="center">
-          {children}
-        </Grid>
+        <Container>{children}</Container>
       </Box>
     </>
   )

@@ -1,4 +1,3 @@
-import Avatar from "@material-ui/core/Avatar"
 import styled from "@emotion/styled"
 import { useWallet } from "../../hooks/useWallet"
 import { ellipseAddress } from "../../lib/utilities"
@@ -9,7 +8,7 @@ const UserInfoContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: 25px;
-  background-color: #e1e4f0;
+  background-color: #312e37;
   padding: 5px 15px 5px 15px;
   margin: 0 5px 0 5px;
 `
@@ -20,12 +19,16 @@ const UserAddressInfo = () => {
     <UserInfoContainer>
       {web3Provider && address ? (
         <>
-          <ButtonStyled onClick={disconnect} variant="text">
+          <ButtonStyled
+            onClick={disconnect}
+            sx={{ color: "#fff" }}
+            variant="text"
+          >
             {ellipseAddress(address)}
           </ButtonStyled>
         </>
       ) : (
-        <ButtonStyled onClick={connect} variant="text">
+        <ButtonStyled onClick={connect} variant="text" sx={{ color: "#fff" }}>
           Connect
         </ButtonStyled>
       )}
