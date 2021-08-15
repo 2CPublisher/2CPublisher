@@ -21,11 +21,6 @@ const UserAddressInfo = () => {
     <UserInfoContainer>
       {web3Provider && address ? (
         <>
-          <Avatar
-            sx={{ width: 40, height: 40 }}
-            alt="Nico Valencia"
-            src="https://pbs.twimg.com/profile_images/1420834839159209984/8DT-YW8Z_400x400.jpg"
-          />
           <ButtonStyled onClick={disconnect} variant="text">
             {ellipseAddress(address)}
           </ButtonStyled>
