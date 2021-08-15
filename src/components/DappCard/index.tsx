@@ -42,9 +42,7 @@ export default function DappCard({ file }: DappCardProps): ReactElement {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            {`https://dweb.link/ipfs/${file.cid}`}
-          </Button>
+          <a href={`https://dweb.link/ipfs/${file.cid}`}>Go to the app</a>
         </CardActions>
       </Card>
     </DappCardContainer>

@@ -8,7 +8,8 @@ import { useWallet } from "src/hooks/useWallet";
 
 const DappListContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  margin: 10px 0 30px 0;
 `;
 
 function Home() {
@@ -37,10 +38,12 @@ function Home() {
       </Typography>
       {address ? (
         <DappListContainer>
-          {fileList ? (
+          {fileList && fileList.length > 0 ? (
             fileList.map((file) => <DappCard file={file} />)
           ) : (
-            <div>No files uploaded</div>
+            <div>
+              <a href="/upload">Upload some files</a>
+            </div>
           )}
         </DappListContainer>
       ) : (

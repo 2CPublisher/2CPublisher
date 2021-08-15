@@ -1,6 +1,4 @@
-import { arrayify } from "ethers/lib/utils";
 import { Web3Storage } from "web3.storage/dist/bundle.esm.min.js";
-import { create } from "ipfs-http-client";
 
 export type Metadata = {
   name: string;

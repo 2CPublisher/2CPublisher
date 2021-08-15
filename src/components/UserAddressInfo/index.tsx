@@ -1,9 +1,8 @@
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
-import styled from "@emotion/styled";
-import { useWallet } from "../../hooks/useWallet";
-import { ellipseAddress } from "../../lib/utilities";
-import { ButtonStyled } from "../../components/Button";
+import Avatar from "@material-ui/core/Avatar"
+import styled from "@emotion/styled"
+import { useWallet } from "../../hooks/useWallet"
+import { ellipseAddress } from "../../lib/utilities"
+import { ButtonStyled } from "../../components/Button"
 
 const UserInfoContainer = styled.div`
   display: flex;
@@ -13,10 +12,10 @@ const UserInfoContainer = styled.div`
   background-color: #e1e4f0;
   padding: 5px 15px 5px 15px;
   margin: 0 5px 0 5px;
-`;
+`
 
 const UserAddressInfo = () => {
-  const { web3Provider, address, connect, disconnect } = useWallet();
+  const { web3Provider, address, connect, disconnect } = useWallet()
   return (
     <UserInfoContainer>
       {web3Provider && address ? (
@@ -31,7 +30,7 @@ const UserAddressInfo = () => {
         </ButtonStyled>
       )}
     </UserInfoContainer>
-  );
-};
+  )
+}
 
-export default UserAddressInfo;
+export default UserAddressInfo

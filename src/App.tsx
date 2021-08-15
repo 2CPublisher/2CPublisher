@@ -7,7 +7,6 @@ import styled from "@emotion/styled";
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   min-height: 600px;
   margin-top: 50px;
 `;
